@@ -103,3 +103,13 @@ library-management-system/
     ├── .env.example
     ├── package.json
     └── tsconfig.json
+
+Migration Implementation Note
+
+During database migration, Prisma Migrate encountered connection issues with the hosted Neon PostgreSQL database.
+
+To complete the database setup, the migration SQL was generated locally using Prisma's "migrate diff" command and executed through the Neon SQL Editor. The corresponding migration history record was then registered in the "_prisma_migrations" table.
+
+The migration was subsequently recognised by Prisma, and "prisma migrate status" reported that the database schema was up to date.
+
+This approach ensured that the required database tables, relationships, and constraints were created successfully in the hosted PostgreSQL database.
